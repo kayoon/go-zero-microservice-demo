@@ -1,0 +1,19 @@
+Name: core-api
+Host: 0.0.0.0
+Port: 8888
+
+# 日志配置
+Log:
+  Mode: file
+  Path: ./demo-logs
+  KeepDays: 15
+  MaxSize: 10
+  Rotation: daily
+
+UserRpc:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: user.rpc
+    # 弱依赖，连接不上不会panic
+    NonBlock: true

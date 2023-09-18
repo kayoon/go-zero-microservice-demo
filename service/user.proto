@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package user;
+option go_package="./service";
+
+message CommonResponse{
+string code = 1;
+string msg = 2;
+string data = 3;
+}
+
+message GetTokenRequest{
+  int32 userId = 1;
+  string groupId = 2;
+  string userName = 3;
+}
+
+message GetTokenResponse{
+string token = 1;
+}
+
+message AuthRequest{
+string token = 1;
+}
+
+message AuthResponse{
+int32 userId = 1;
+string groupId = 2;
+string userName = 3;
+string expireTime = 4;
+}
+
+service User {
+rpc GetToken(GetTokenRequest) returns (GetTokenResponse);
+rpc JwtAuth(AuthRequest) returns (AuthResponse);
+}
+
+
+

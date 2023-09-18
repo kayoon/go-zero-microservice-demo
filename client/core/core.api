@@ -1,0 +1,28 @@
+type EmptyResponse{}
+
+type GetTokenRequest {
+	UserId   int    `json:"user_id"`
+	UserName string `json:"user_name"`
+	GroupId  string `json:"group_id"`
+}
+
+type GetTokenResponse {
+	Token string `json:"token"`
+}
+
+type UserInfoRequest {
+	Token string `json:"token"`
+}
+
+type UserInfoResponse {
+	UserName string `json:"user_ame"`
+	GroupId  string `json:"group_id"`
+}
+
+service core-api {
+	@handler GettokenHandler
+	post /token/gettoken(GetTokenRequest) returns (GetTokenResponse)
+	
+	@handler UserInfoHandler
+	post /user/userinfo(UserInfoRequest) returns (UserInfoResponse)
+}
